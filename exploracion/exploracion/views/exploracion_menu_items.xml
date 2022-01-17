@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+      
+            <!-- Action that opens the view -->
+        <record id='exploracion_action' model='ir.actions.act_window'>
+            <field name="name">Gestion de la flota espacial</field>
+            <field name="res_model">exploracion.nave</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+      
+        <record id='mision_action' model='ir.actions.act_window'>
+            <field name="name">Gestion de misiones espaciales</field>
+            <field name="res_model">exploracion.mision</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <!-- Menu items to make the module visible to users -->
+        <!-- Hint: al poner el web_icon en el menu base, hay que poner el nombre del MODULO -->
+        <menuitem name="Exploración Espacial" id="flota_espacial_base_menu"
+                  sequence="1" 
+                  web_icon="exploracion,static/description/icon.png"/>
+        <menuitem name="Flota" id="flota_espacial_sub_menu" 
+                  parent="flota_espacial_base_menu" sequence="2"/>
+        <menuitem name="Naves" id="flota_espacial_menu" 
+                  parent="flota_espacial_sub_menu" sequence="3" 
+                  action="exploracion_action"/>
+        <menuitem name="Misiones" id="mision_espacial_menu"
+                  parent="flota_espacial_sub_menu" sequence="4"
+                  action="mision_action"/>
+                
+  </data>
+</odoo>

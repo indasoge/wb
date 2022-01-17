@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="report_mision" model="ir.actions.report">
+        <field name="name">Reporte de Misiones</field>
+        <field name="model">exploracion.mision</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">exploracion.report_mision_template</field>
+        <field name="report_file">exploracion.report_mision_template</field>
+        <field name="binding_model_id" ref="model_exploracion_mision"/>        
+    </record>
+</odoo>

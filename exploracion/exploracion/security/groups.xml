@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Security Groups Nave Model -->
+    <record id="group_exploracion_tripulacion" model="res.groups">
+        <field name="name">Exploracion / Tripulacion</field>
+        <field name="category_id"
+               ref="base.module_category_exploracion"/>
+        <field name="implied_ids"
+               eval="[(4,ref('base.group_user'))]"/>
+    </record>
+    
+     <record id="group_exploracion_admin" model="res.groups">
+        <field name="name">Exploracion / Admin</field>
+        <field name="category_id"
+               ref="base.module_category_exploracion"/>
+        <field name="implied_ids"
+               eval="[(4, ref('group_exploracion_tripulacion'))]"/>
+        <field name="users" eval ="[(4,ref('base.user_admin'))]"/>
+    </record>
+    
+    <!--Security Groups Mision Model -->
+    <record id="group_exploracion_mision_tripulacion" model="res.groups">
+        <field name="name">Mision / Tripulacion</field>
+        <field name="category_id"
+               ref="base.module_category_exploracion"/>
+        <field name="implied_ids"
+               eval="[(4,ref('base.group_user'))]"/>
+    </record>
+    
+     <record id="group_exploracion_mision_adm" model="res.groups">
+        <field name="name">Mision / Admin</field>
+        <field name="category_id"
+               ref="base.module_category_exploracion"/>
+        <field name="implied_ids"
+               eval="[(4, ref('group_exploracion_tripulacion'))]"/>
+        <field name="users" eval ="[(4,ref('base.user_admin'))]"/>
+    </record>
+    
+    <!-- Security groups for wizard -->
+    <record id="group_exploracion_purchase_wizard_tripulacion" model="res.groups">
+        <field name="name">Wizard Exploracion Compras / Tripulacion</field>
+        <field name="category_id"
+               ref ="base.module_category_exploracion"/>
+        <field name="implied_ids"
+               eval="[(4,ref('base.group_user'))]"/>
+    </record>
+    <record id="group_exploracion_purchase_wizard_adm" model="res.groups">
+        <field name="name">Wizard Exploracion Compras / Admin</field>
+        <field name="category_id"
+               ref="base.module_category_exploracion"/>
+        <field name="implied_ids"
+               eval="[(4,ref('group_exploracion_purchase_wizard_tripulacion'))]"/>
+        <field name="users"
+               eval="[(4,ref('base.user_admin'))]"/>
+    </record>
+</odoo>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!-- Record rules Naves-->
+    <record id="solo_activos_vistos_por_usuarios" model="ir.rule">
+        <field name="name">Only Active Spaceships can be seen by users</field>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="0"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+        <field name="model_id" ref="model_exploracion_nave"/>
+        <field name="groups"
+               eval="[(4,ref('base.group_user'))]"/>
+        <field name="domain_force">[('active','=',True)]</field>
+    </record>
+
+    <record id="solo_activos_para_tripulación" model="ir.rule">
+        <field name="name">Only Active Spaceships can be seen by crew</field>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+        <field name="model_id" ref="model_exploracion_nave"/>
+        <field name="groups"
+               eval="[(4,ref('exploracion.group_exploracion_tripulacion'))]"/>
+        <field name="domain_force">[('active','=',True)]</field>
+    </record>
+
+    <record id="admins_ven_todas_las_naves" model="ir.rule">
+        <field name="name">All spaceships can be seen by admins</field>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+        <field name="model_id" ref="model_exploracion_nave"/>
+        <field name="groups"
+               eval="[(4,ref('exploracion.group_exploracion_admin'))]"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+    </record>
+
+    <!-- Record rules Misiones-->
+    <record id="solo_misiones_activas_vistos_por_usuarios" model="ir.rule">
+        <field name="name">Only Active Missions can be seen by users</field>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="0"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+        <field name="model_id" ref="model_exploracion_mision"/>
+        <field name="groups"
+               eval="[(4,ref('base.group_user'))]"/>
+        <field name="domain_force">[('active','=',True)]</field>
+    </record>
+
+    <record id="solo_misiones_activas_para_tripulación" model="ir.rule">
+        <field name="name">Only Active Missions can be seen by crew</field>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+        <field name="model_id" ref="model_exploracion_mision"/>
+        <field name="groups"
+               eval="[(4,ref('exploracion.group_exploracion_mision_tripulacion'))]"/>
+        <field name="domain_force">[('active','=',True)]</field>
+    </record>
+
+    <record id="admins_ven_todas_las_misiones" model="ir.rule">
+        <field name="name">All mission can be seen by admins</field>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+        <field name="model_id" ref="model_exploracion_mision"/>
+        <field name="groups"
+               eval="[(4,ref('exploracion.group_exploracion_mision_adm'))]"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+    </record>    
+    
+    <!-- Record rules Wizard Compras-->
+
+    <record id="wizard_compras_para_tripulación" model="ir.rule">
+        <field name="name">Purchase Mission Wizard seen by crew</field>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+        <field name="model_id" ref="model_exploracion_purchase_wizard"/>
+        <field name="groups"
+               eval="[(4,ref('exploracion.group_exploracion_purchase_wizard_tripulacion'))]"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+    </record>
+
+    <record id="wizard_compras_para_admins" model="ir.rule">
+        <field name="name">Purchase Mission Wizard seen by admins</field>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+        <field name="model_id" ref="model_exploracion_purchase_wizard"/>
+        <field name="groups"
+               eval="[(4,ref('exploracion.group_exploracion_purchase_wizard_adm'))]"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+    </record>    
+</odoo>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_mision_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 t-field="doc.name" class="mt16"/>
+                        <div class="row mt32 mb32" id="info_mision">
+                            <div class="col-auto mw-100 mb2">
+                                <strong>Duración de la Misión:</strong>
+                                <t t-if="doc.fecha_lanzamiento">
+                                    <span t-field="doc.fecha_lanzamiento"/>
+                                </t>
+                                hasta
+                                <t t-if="doc.fecha_retorno">
+                                    <span t-field="doc.fecha_retorno"/>
+                                </t>
+                            </div>
+
+                            <div t-if="doc.nave_id" class="col-auto mw-100 mb-2">
+                                <strong>Nave:</strong>
+                                <span t-field="doc.nave_id.name"/>
+                            </div>
+                        </div>
+                        <h4>Tripulantes</h4>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th name="th_name">Nombre</th>
+                                    <th name="th_phone">Teléfono</th>
+                                    <th name="th_email">Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="doc.crew_ids" t-as="tripulante">
+                                    <td t-if="tripulante.name" name="td_name">
+                                        <t t-esc="tripulante.name" />
+                                    </td>
+                                    <td t-if="tripulante.phone" name="td_phone">
+                                        <t t-esc="tripulante.phone" />
+                                    </td>
+                                    <td t-if="tripulante.email" name="td_email">
+                                        <t t-esc="tripulante.email" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

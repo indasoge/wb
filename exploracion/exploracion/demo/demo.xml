@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+      <record model="exploracion.nave" id="exploracion.tsp000001">
+            <field name="name">TSP000001</field>
+            <field name="description">Cargo Space Ship Lunar Transporter 000001</field>
+            <field name="length">150.0</field>
+            <field name="width">75.0</field>
+            <field name="heigth">25.0</field>
+            <field name="fuel_type">solido</field>
+            <field name="ship_type">carguero</field>
+            <field name="crew_number">10</field>
+            <field name="passanger_number">0</field>
+            <field name="active">active</field>
+        </record>
+        <record model="exploracion.nave" id="exploracion.sp000002">
+            <field name="name">BSP000001</field>
+            <field name="description">Battle Space Ship Lunar Fighter 000001</field>
+            <field name="length">75.0</field>
+            <field name="width">30.0</field>
+            <field name="heigth">10.0</field>
+            <field name="fuel_type">solido</field>
+            <field name="ship_type">naveCombate</field>
+            <field name="crew_number">2</field>
+            <field name="passanger_number">0</field>
+            <field name="active">active</field>
+        </record>
+
+    </data>
+</odoo>

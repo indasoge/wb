@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="mision_purchase_wizard_form_view">
+            <field name="name">mision.purchase.wizard.form</field>
+            <field name="model">exploracion.purchase.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Crear Orden de Compra para Misión">
+                    <group>
+                        <field name="mision_id"/>
+                        <field name="fare"/>
+                        <field name="mision_crew_ids" invisible="1"/>
+                        <field name="purchase_crew_ids" domain="[('id','in',mision_crew_ids)]"/>
+                    </group>
+                    <footer>
+                        <button name="create_purchase_orders" type="object"
+                                string="Create" class="oe_highlight"/>
+                        or
+                        <button special="cancel" string="Cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+        <record id='launch_purchase_wizard' model='ir.actions.act_window'>
+            <field name="name">Crear Orden de Compra</field>
+            <field name="binding_model_id" ref="model_exploracion_mision"/>
+            <field name="res_model">exploracion.purchase.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+        <!-- deprecated DELETE 
+        <act_window id="launch_purchase_wizard"
+                    name="Crear Orden de Compra"
+                    binding_model="exploracion.mision"
+                    res_model="exploracion.purchase.wizard"
+                    view_mode="form"
+                    target="new"/>
+        -->
+    </data>
+</odoo>

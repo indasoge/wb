@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+        
+        <!-- Nave Form -->
+        <record model="ir.ui.view" id="nave_view_form">
+            <field name="name">nave.form</field>
+            <field name="model">exploracion.nave</field>
+            <field name="arch" type="xml">
+                <form string="Formulario Nave Espacial">
+                    <sheet>
+                        <h1><field name="name"/></h1>
+                        <group>
+                            <group>
+                                <field name="ship_type"/>
+                                <field name="fuel_type" force_save="1"/>
+                                <field name="crew_number"/>
+                                <field name="passanger_number"/>
+                            </group>
+                            <group>
+                                <field name="cost_crew"/>
+                                <field name="length"/>
+                                <field name="width"/>
+                                <field name="heigth"/>
+                            </group>
+                            <group>
+                                <field name="active"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Description">
+                                <field name="description"/>
+                            </page>
+                            <page string="Misiones">
+                                <field name="mision_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <!-- Naves  List -->
+        <record model="ir.ui.view" id="spaceship_view_list">
+            <field name="name">nave.list</field>
+            <field name="model">exploracion.nave</field>
+            <field name="arch" type="xml">
+                <tree string="Flota Espacial">
+                    <field name="name"/>
+                    <field name="ship_type"/>
+                    <field name="crew_number"/>
+                    <field name="passanger_number"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- Naves Search -->
+        <record model="ir.ui.view" id="spaceship_view_search">
+            <field name="name">nave.search</field>
+            <field name="model">exploracion.nave</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="ship_type"/>
+                </search>
+            </field>
+        </record>
+
+           
+  </data>
+</odoo>

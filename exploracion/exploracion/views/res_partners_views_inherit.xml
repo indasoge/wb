@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>   
+        <!-- Mision Form -->
+        <record model="ir.ui.view" id="partner_view_form_inherit_exploracion">
+            <field name="name">partner.view.form.inherit.exploracion</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                 
+                <xpath expr="//field[@name='vat']" position="after">
+                    <field name="is_nave_crew" attrs="{
+                                                      'invisible': [('is_company','=',True)]
+                                                      }"/>
+                    <field name="crew_category" attrs="{
+                                                      'invisible': [('is_nave_crew','=',False)]
+                                                      }"/>
+                    <field name="number_missions" attrs="{
+                                                      'invisible': [('is_nave_crew','=',False)]
+                                                      }"/>
+                </xpath>
+                <xpath expr="//sheet//notebook" position="inside">
+                    <page string="Misiones" attrs="{
+                                                      'invisible': [('is_nave_crew','=',False)]
+                                                      }">
+                        <field name="mision_ids">
+                            <tree>
+                                <field name="name"/>
+                                <field name="nave_id"/>
+                                <field name="origen"/>
+                                <field name="destino"/>
+                                <field name="fecha_lanzamiento"/>
+                                <field name="fecha_retorno"/>
+                                <field name="active"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+           
+        </record>
+        
+
+  </data>
+</odoo>
